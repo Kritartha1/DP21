@@ -18,3 +18,28 @@ class Solution {
     }
    
 }
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+class Solution {
+    //O(1) space
+    //O(n) time complexity
+    public int minCostClimbingStairs(int[] cost) {
+        
+        int a=0;
+        int b=0;
+        int n=cost.length;
+        
+        for(int i=2;i<=n;i++){
+            int temp=Math.min(b+cost[i-1],a+cost[i-2]);
+            a=b;
+            b=temp;
+        }
+        return b;
+    
+        
+    }
+   
+}
