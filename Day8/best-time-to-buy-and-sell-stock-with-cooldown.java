@@ -50,3 +50,30 @@ class Solution {
         } return prev[n-1];
     }
 }
+
+//****************************************************************************************************************************************************************************
+//Best approach:O(n)
+
+class Solution {
+    public int maxProfit(int[] prices) {
+        //Explanation://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/discuss/75931/Easiest-JAVA-solution-with-explanations
+        int b0=0,b1=1,s0=0,s1=0,s2=0;
+        //b0=buy at i or eqv
+        //b1=buy at i-1 or eqv
+        //s0=sell at i or eqv
+        //s1 =sell at i-1 or eqv
+        //s2=sell at i-2 or eqv
+        b0=-prices[0];
+        b1=b0;
+        int n=prices.length;
+        for(int i=1;i<n;i++){
+            b0=Math.max(b1,s2-prices[i]);
+            s0=Math.max(s1,b1+prices[i]);
+            s2=s1;
+            s1=s0;
+            b1=b0;
+        }
+        
+        return s0;
+    }
+}
