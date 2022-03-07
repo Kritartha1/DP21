@@ -14,7 +14,7 @@ class Solution {
                     temp.add(1);
                     continue;
                 }
-                int num=(j-1>=0?ans.get(i-1).get(j-1):0)+ans.get(i-1).get(j);
+                int num=ans.get(i-1).get(j-1)+ans.get(i-1).get(j);
                 
                 temp.add(num);
                 
