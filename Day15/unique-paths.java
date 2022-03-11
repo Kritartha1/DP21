@@ -2,7 +2,7 @@
 
 //Approach 1: Math approach O(n)
 class Solution {
-    public int[][] dp;
+   
     public int uniquePaths(int m, int n) {
         double ans=1;
         //factorial it is..
@@ -44,5 +44,28 @@ class Solution {
         
         return dp[i][j]=ans;
     }
+}
+//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
+
+
+//Approach 3: Space efficient
+
+class Solution {
+   
+    public int uniquePaths(int m, int n) {
+        int[] dp=new int[n];
+        Arrays.fill(dp,1);
+        for(int i=1;i<m;i++){
+            for(int j=1;j<n;j++){
+                dp[j]=dp[j]+dp[j-1];
+                //same as dp[i][j]=dp[i-1][j]+dp[i][j-1]
+                //[i-1][j] means previous value of j or value of j from the previous layer.
+                //dp[i][j-1] means of the same layer value of the predecessor of j
+            }
+        }
+        
+        return dp[n-1];
+    }
+    
 }
 
