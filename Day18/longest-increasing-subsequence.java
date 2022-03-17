@@ -85,3 +85,33 @@ class Solution {
         return j+1;//length of increasing array 
     }
 }
+
+///\\\///\\\///\\\///\\\///\\\///\\\///\\\///\\\///\\\///\\\///\\\///\\\///\\\///\\\///\\\///\\\///\\\///\\\///\\\///\\\///\\\///\\\///\\\///\\///\\\///\\\///\\\///\
+
+//Approach 3: O(nlog(n)) time --------- O(n) space
+class Solution {
+    public int lengthOfLIS(int[] nums) {
+        int n=nums.length;
+        int[] tails=new int[n];
+        int size=0;
+        
+        for(int a:nums){
+            int i=0;
+            int j=size;
+            while(i!=j){
+                int m=i+(j-i)/2;
+                if(tails[m]<a){
+                    i=m+1;
+                }else{
+                    j=m;
+                }
+            }
+            tails[i]=a;
+            if(i==size){
+                ++size;
+            }
+        }
+        return size;
+        
+    }
+}
