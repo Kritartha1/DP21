@@ -1,4 +1,5 @@
 //leetcode.com/problems/longest-increasing-subsequence/
+//youtu.be/odrfUCS9sQk
 
 //Approach1: LCS O(n^2) space
 class Solution {
