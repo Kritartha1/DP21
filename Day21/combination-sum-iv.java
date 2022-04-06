@@ -76,3 +76,30 @@ class Solution {
         
     }
 }
+
+
+//Approach 3: O(n) space (similar as coin change 2)---> just order of loop changes
+class Solution {
+    
+    
+    public int combinationSum4(int[] nums, int target) {
+        int m=nums.length;
+        int n=target;
+        
+        int dp[] =new int[n+1];
+        dp[0]=1;
+        
+        
+        for(int j=1;j<=n;j++){
+            for(int i=0;i<m;i++){
+                if(nums[i]<=j){
+                    dp[j]+=dp[j-nums[i]];
+                }
+            }
+        }
+        
+        return dp[target];
+    }
+    
+    
+}
