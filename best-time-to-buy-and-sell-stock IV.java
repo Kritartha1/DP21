@@ -92,3 +92,48 @@ class Solution {
     }
     
 }
+//Approach 4:
+class Solution {
+    public int maxProfit(int k, int[] prices) {
+        int n=prices.length;
+        
+        if(k>=n/2){
+            int maxProfit=0;
+            for(int i=1;i<n;i++ ){
+                if(prices[i]>=prices[i-1]){
+                    maxProfit+=prices[i]-prices[i-1];
+                }
+            }
+            return maxProfit;
+        }
+        if(n>0){
+            
+           
+            int[] dp=new int[n];
+            int min;
+            int temp;
+        for(int i=1;i<=k;i++){
+            
+            min=prices[0];
+            temp=0;
+            
+            for(int j=1;j<n;j++){
+                int new_temp=dp[j];
+                dp[j]=dp[j-1];
+                dp[j]=Math.max(dp[j],prices[j]-min);
+                
+                min=Math.min(min,prices[j]-temp);
+                temp=new_temp;
+                
+                
+                
+                
+            }
+        }
+       
+        return dp[n-1];
+        }
+        return 0;
+        
+    }
+}
