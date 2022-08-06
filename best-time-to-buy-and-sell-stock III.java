@@ -27,3 +27,30 @@ class Solution {
         
     }
 }
+
+
+
+//Approach 2:
+//Since, k=2, i.e we looped two times only, so we can take variables to save time.
+class Solution {
+    public int maxProfit(int[] prices) {
+        int n=prices.length;
+        
+       
+        int ans=0;
+        int firstBuy=Integer.MIN_VALUE;
+        int firstSell=0;
+        int secondBuy=Integer.MIN_VALUE;
+        int secondSell=0;
+        for(int i=0;i<n;i++){
+           firstBuy=Math.max(firstBuy,-prices[i]);
+           firstSell=Math.max(firstBuy+prices[i],firstSell);
+           secondBuy=Math.max(secondBuy,firstSell-prices[i]);
+           secondSell=Math.max(secondSell,secondBuy+prices[i]);
+            
+        }
+        
+        return secondSell;
+        
+    }
+}
